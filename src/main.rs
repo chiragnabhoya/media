@@ -88,6 +88,13 @@ fn main() {
     catalog.add(podcast);
     catalog.add(placeholder);
 
-    println!("{:#?}", catalog);
+    match catalog.items.get(100) {
+        Some(value) => {
+            println!("Item: {:#?}", value);
+        }
+        None => {
+            println!("Nothing at that index")
+        }
+    }
 
 }
