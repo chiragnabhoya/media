@@ -53,6 +53,21 @@ impl Catalog {
         self.items.push(media);
 
     }
+
+    fn get_by_index(&self, index: usize) -> MightHaveAValue {
+        if self.items.len() > index {
+            // Good! We have something to return
+            MightHaveAValue::ThereISAValue(&self.items[index])
+        } else {
+            // Bad! We don't have anything to return!!!
+            MightHaveAValue::NoValueAvailable
+        }
+    }
+}
+
+enum MightHaveAValue<'a> {
+    ThereISAValue(&'a Media),
+    NoValueAvailable
 }
 
 fn print_media(media: Media) {
@@ -88,13 +103,22 @@ fn main() {
     catalog.add(podcast);
     catalog.add(placeholder);
 
-    match catalog.items.get(100) {
-        Some(value) => {
-            println!("Item: {:#?}", value);
-        }
-        None => {
-            println!("Nothing at that index")
-        }
-    }
+    // let item = catalog.get_by_index(40);
 
+    // println!("{:#?}", item);
+
+    // match catalog.get_by_index(9990) {
+    //     MightHaveAValue::ThereISAValue(value) => {
+    //         println!("Item: {:#?}", value);
+    //     }
+    //     MightHaveAValue::NoValueAvailable => {
+    //         println!("No value here!");
+    //     }
+    // }
+
+    if let MightHaveAValue::ThereISAValue(value) = catalog.get_by_index(9990) {
+        println!("Item in pattern match: {:#?}", value)
+    } else {
+        println!("No value!!!")
+    }
 }
