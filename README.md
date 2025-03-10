@@ -42,3 +42,12 @@ impl Media {
 }
 ```
 The `description` method provides formatted output for each media type.
+
+### Catalog Struct
+```rust
+#[derive(Debug)]
+struct Catalog {
+    items: Vec<Media>,
+}
+```
+The `Catalog` struct manages a collection of `Media` items.
