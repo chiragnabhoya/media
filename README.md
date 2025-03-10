@@ -51,3 +51,26 @@ struct Catalog {
 }
 ```
 The `Catalog` struct manages a collection of `Media` items.
+
+### Catalog Methods
+```rust
+impl Catalog {
+    fn new() -> Self {
+        Catalog { items: vec![] }
+    }
+
+    fn add(&mut self, media: Media) {
+        self.items.push(media);
+    }
+
+    fn get_by_index(&self, index: usize) -> Option<&Media> {
+        if self.items.len() > index {
+            Some(&self.items[index])
+        } else {
+            None
+        }
+    }
+}
+```
+The `Catalog` provides methods to create a new catalog, add items, and retrieve items by index safely.
+
