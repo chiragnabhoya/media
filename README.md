@@ -74,3 +74,26 @@ impl Catalog {
 ```
 The `Catalog` provides methods to create a new catalog, add items, and retrieve items by index safely.
 
+## Example Usage
+```rust
+fn main() {
+    let audiobook = Media::Audiobook { title: String::from("An Audiobook") };
+    let good_movie = Media::Movie { title: String::from("Good Movie"), director: String::from("Good Director") };
+    let bad_book = Media::Book { title: String::from("Bad Book"), author: String::from("Bad Author") };
+    let podcast = Media::Podcast(10);
+    let placeholder = Media::Placeholder;
+
+    let mut catalog = Catalog::new();
+    catalog.add(audiobook);
+    catalog.add(good_movie);
+    catalog.add(bad_book);
+    catalog.add(podcast);
+    catalog.add(placeholder);
+
+    match catalog.get_by_index(9990) {
+        Some(value) => println!("Item: {:#?}", value),
+        None => println!("No value here!"),
+    }
+}
+```
+This example demonstrates how to create a catalog, add media items, and retrieve them safely.
