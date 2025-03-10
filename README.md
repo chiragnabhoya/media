@@ -26,3 +26,19 @@ enum Media {
 }
 ```
 This enum represents different types of media that can be stored in the catalog.
+
+### Media Methods
+```rust
+impl Media {
+    fn description(&self) -> String {
+        match self {
+            Media::Book { title, author } => format!("Book: {} {}", title, author),
+            Media::Movie { title, director } => format!("Movie: {} {}", title, director),
+            Media::Audiobook { title } => format!("Audiobook: {}", title),
+            Media::Podcast(id) => format!("Podcast: {}", id),
+            Media::Placeholder => String::from("Placeholder"),
+        }
+    }
+}
+```
+The `description` method provides formatted output for each media type.
