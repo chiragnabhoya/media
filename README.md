@@ -97,3 +97,18 @@ fn main() {
 }
 ```
 This example demonstrates how to create a catalog, add media items, and retrieve them safely.
+
+## Installation & Running
+1. Ensure you have Rust installed: [Rust Installation Guide](https://www.rust-lang.org/tools/install)
+2. Clone this repository:
+   ```sh
+   git clone https://github.com/your-repo/media-catalog.git
+   cd media-catalog
+   ```
+3. Run the project:
+   ```sh
+   cargo run
+   ```
+
+## License
+This project is licensed under the MIT License.
